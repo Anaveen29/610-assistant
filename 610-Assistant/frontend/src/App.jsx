@@ -159,9 +159,10 @@ function App() {
   useEffect(() => {
     const loadData = async () => {
       try {
+        const apiUrl = import.meta.env.VITE_API_URL || '';
         const [eventsResponse, investigateResponse] = await Promise.all([
-          axios.get("/api/events/").catch(() => ({ data: { events: [] } })),
-          axios.get("/api/investigate/").catch(() => ({ data: null })),
+          axios.get(`${apiUrl}/api/events/`).catch(() => ({ data: { events: [] } })),
+          axios.get(`${apiUrl}/api/investigate/`).catch(() => ({ data: null })),
         ]);
         setEvents(eventsResponse.data?.events ?? []);
         setInvestigation(investigateResponse.data ?? null);
