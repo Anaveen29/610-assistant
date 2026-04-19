@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: 610-frontend
+    env: static
+    # The build command tells Render how to build the Vite app
+    buildCommand: cd frontend && npm install && npm run build
+    # The publish directory where Vite outputs the built files
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://six10-assistant.onrender.com
+    # Redirect rules to support React Router (SPA routing)
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

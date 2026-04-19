@@ -38,6 +38,8 @@ function App() {
   
   const [challengingEventId, setChallengingEventId] = useState(null);
   const [challengeReason, setChallengeReason] = useState("");
+  
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5173";
 
   const handleApprove = (event) => {
     setApprovedInsights((current) =>
